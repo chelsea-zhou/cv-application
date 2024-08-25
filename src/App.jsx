@@ -4,7 +4,7 @@ import { EditPanel } from './components/EditPanel';
 import './styles/App.css';
 
 function App() {
-  const [data, setData] = useState({generalInfo: {}});
+  const [data, setData] = useState({generalInfo: {}, eduInfo: {}, experiences: {}});
 
   useEffect(() => {
     console.log('State changed:', data);
@@ -17,8 +17,8 @@ function App() {
 
   return (
     <div className='panels'>
-      <EditPanel submitData={submitData}/>
-      <DisplayPanel data={data}/>
+      <EditPanel class="editPanel" submitData={submitData}/>
+      <DisplayPanel class="displayPanel" data={data}/>
     </div>
   )
 }

@@ -1,4 +1,8 @@
-.editPanel{
+.editPanel {
     display: flex;
     flex-direction: column;
+}
+
+.editPanel .sectionTitle {
+    font-size: x-large;
 }

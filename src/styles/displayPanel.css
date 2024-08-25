@@ -1,0 +1,75 @@
+* {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+.displayPanel{
+    display: flex;
+    flex-direction: column;
+}
+
+.infoContainer {
+    flex:1
+}
+
+.workExperiences {
+    flex: 6
+}
+
+.sectionTitle {
+    font-size: x-large;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+
+.education {
+    flex: 3
+}
+.infoContainer .username p{
+    font-size: xxx-large;
+    font-weight: 900;
+    text-align: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    gap: 10px;
+}
+
+
+
+.h2 {
+    font-weight: 600;
+    font-size: medium;
+    padding: 0;
+    margin:0;
+}
+
+.education #degree, .company {
+    font-weight: 400;
+}
+
+.education #timeperiod, .workExp .timePeriod {
+    font-weight: 200;
+    font-size: small;
+    color: gray;
+}
+
+.workExp {
+    margin-bottom: 10px;
+}
+
+.achievements{
+    margin: 0;
+    padding: 0;
+}
+
+.achievements ul {
+    margin: 0;
+}

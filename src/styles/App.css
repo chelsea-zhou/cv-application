@@ -1,4 +1,17 @@
 .panels{
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  gap: 5%;
+}
+
+
+.editPanel {
+  flex: 1
+}
+.displayPanel {
+  flex: 2
 }
