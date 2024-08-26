@@ -28,33 +28,15 @@ export function EditPanel({submitData}) {
             - ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
             - eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
             `
-        },
-        "1" : {
-            company: 'Scotiabank DA Lab',
-            timePeriod: '2018 Jan - 2018 April',
-            position: 'Data Scientist Intern',
-            achievements: `- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
-            - aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            - ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-            - eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-            `
-        },
-        "2" : {
-            company: 'IBM',
-            timePeriod: '2018 Sept - 2019 April',
-            position: 'AI & Iot Developer',
-            achievements: `- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
-            - aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            - ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-            - eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-            `
         }
     }
+
+    const defaultComp = <WorkExperienceEdit id="0" />;
 
     const [generalInfo, setGeneralInfo] = useState(defaultGeneralInfo);
     const [eduInfo, setEduInfo] = useState(defualtEduInfo);
     const [experiences, setExperiences] = useState(defaultExperience);
-    const [expComps, setExpComps] = useState([]);
+    const [expComps, setExpComps] = useState([defaultComp]);
 
     const handleGeneralInfoInputChange = (e) => {
         const {name, value} = e.target;
@@ -88,55 +70,52 @@ export function EditPanel({submitData}) {
         // to accumulate the effect
         setExperiences((prevExperiences) => ({
             ...prevExperiences,
-            [id]: {
-                ...prevExperiences[id],
+            ["0"]: {
+                ...prevExperiences["0"],
                 [name]: value
             }
         }));
     }
 
-
-
     function WorkExperienceEdit({id}) {
-
         return (            
-        <>
-            <label>company</label>
-            <input 
-                type="text" 
-                id = {id}
-                name="company"
-                onChange={handleWorkExperienceChange}
-            />
-            <label>time period</label>
-            <input 
-                type="text"
-                id = {id}
-                name="timePeriod"
-                onChange={handleWorkExperienceChange}
-            />
-            <label>position</label>
-            <input 
-                type="text" 
-                id = {id}
-                name="position"
-                onChange={handleWorkExperienceChange}
-            />
-            <label>achievements</label>
-            <textarea
-                id= {id}
-                name="achievements"
-                onChange={handleWorkExperienceChange}
-                rows="5"
-             />
-        </>)
+            <div className='form-group'>
+                <label>company</label>
+                <input 
+                    type="text" 
+                    id = {id}
+                    name="company"
+                    onChange={handleWorkExperienceChange}
+                />
+                <label>time period</label>
+                <input 
+                    type="text"
+                    id = {id}
+                    name="timePeriod"
+                    onChange={handleWorkExperienceChange}
+                />
+                <label>position</label>
+                <input 
+                    type="text" 
+                    id = {id}
+                    name="position"
+                    onChange={handleWorkExperienceChange}
+                />
+                <label>achievements</label>
+                <textarea
+                    id= {id}
+                    name="achievements"
+                    onChange={handleWorkExperienceChange}
+                    rows="5"
+                >{defaultExperience["0"].achievements}</textarea>
+            </div>
+        )
     }
 
 
     const addNewExperience = (e) => {
         e.preventDefault();
-        // push new experience into array
-        // todo: should have delete experience as well?
+        // todo: add delete button
         const id = expComps.length;
         const newComp = <WorkExperienceEdit key={id} id={id} />;
         setExpComps([...expComps, newComp])
@@ -145,42 +124,47 @@ export function EditPanel({submitData}) {
     return (
         <>
         <form className='editPanel'>
-            <label className='sectionTitle'>General Info</label>
-            <label>name</label>
-            <input 
-                type="text" 
-                name="name"
-                value={generalInfo.name}
-                onChange={handleGeneralInfoInputChange}
-            />
-            <label>email</label>
-            <input 
-                type="text" 
-                name="email"
-                value={generalInfo.email}
-                onChange={handleGeneralInfoInputChange}
-            />
-            <label>phoneNumber</label>
-            <input 
-                type="text" 
-                name="phoneNumber"
-                value={generalInfo.phoneNumber}
-                onChange={handleGeneralInfoInputChange}
-            />
-            <label>github</label>
-            <input 
-                type="text" 
-                name="github"
-                value={generalInfo.github}
-                onChange={handleGeneralInfoInputChange}
-            />
-            <label>linkedin</label>
-            <input 
-                type="text" 
-                name="linkedin"
-                value={generalInfo.linkedin}
-                onChange={handleGeneralInfoInputChange}
-            />
+            <p>Edit Panel</p>
+            <div className='form-group'>
+                <label className='sectionTitle'>General Info</label>
+                <label>name</label>
+                <input 
+                    type="text" 
+                    name="name"
+                    value={generalInfo.name}
+                    onChange={handleGeneralInfoInputChange}
+                />
+                <label>email</label>
+                <input 
+                    type="text" 
+                    name="email"
+                    value={generalInfo.email}
+                    onChange={handleGeneralInfoInputChange}
+                />
+                <label>phoneNumber</label>
+                <input 
+                    type="text" 
+                    name="phoneNumber"
+                    value={generalInfo.phoneNumber}
+                    onChange={handleGeneralInfoInputChange}
+                />
+                <label>github</label>
+                <input 
+                    type="text" 
+                    name="github"
+                    value={generalInfo.github}
+                    onChange={handleGeneralInfoInputChange}
+                />
+                <label>linkedin</label>
+                <input 
+                    type="text" 
+                    name="linkedin"
+                    value={generalInfo.linkedin}
+                    onChange={handleGeneralInfoInputChange}
+                />
+            </div>
+            
+            <div className='form-group'>
             <label className='sectionTitle'>Education</label>
             <label>school name</label>
             <input 
@@ -203,15 +187,14 @@ export function EditPanel({submitData}) {
                 value={eduInfo.degree}
                 onChange={handleEduInfoInputChange}
             />
+            </div>
 
 
-
-        <label className="sectionTitle">Work Experiences</label>
-
-        <button onClick={addNewExperience}> add new experience</button>
-
-        {expComps.map((comp) => comp)}
-
+        <div className='form-group'>
+            <label className="sectionTitle">Work Experiences</label>
+            {expComps.map((comp) => comp)}
+            <button onClick={addNewExperience}> Add New Experience</button>
+        </div>
 
         <button  onClick={handleSubmit}>Preview</button>
         </form>
